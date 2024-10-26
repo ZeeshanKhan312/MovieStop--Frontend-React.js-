@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieStop Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1 class="navbar-title">Movie Stop</h1>
+    <div class="navbar-left">
+       <!-- Button to Open Modal -->
+      <button class="navbarBtn" id="openSignupModalBtn">Sign Up</button>
+      <button class="navbarBtn" id="openSigninModalBtn">Sign In</button>
+    </div>
+  </nav>
+
+  <!-- Sign-Up Modal Structure -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Sign Up</h2>
+      <hr class="divider">  <!-- use to create line -->
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+
+        <div class="form-group">
+          <label for="email">Email ID:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+
+
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <textarea id="address" name="address" rows="3" required></textarea>
+        </div>
+
+
+        <div class="form-group">
+          <label for="pincode">Pin Code:</label>
+          <input type="text" id="pincode" name="pincode" required>
+        </div>
+
+        <button class="signupBtn" type="submit">Sign Up</button>
+      </form>
+      <button class="signinBtn" id="openSigninModalBtn">Sign In</button>
+    </div>
+  </div>
+
+  <!-- Sign-In Modal Structure -->
+  <div id="signinModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Sign In</h2>
+      <hr class="divider">
+      <form id="signinForm">
+        <div class="form-group">
+          <label for="signinEmail">Email ID:</label>
+          <input type="email" id="signinEmail" name="signinEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="signinPassword">Password:</label>
+          <input type="password" id="signinPassword" name="signinPassword" required>
+        </div>
+        <button class="signinBtn" type="submit">Sign In</button>
+      </form>
+      <button class="signupBtn" id="openSignupModalBtn">Sign Up</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
