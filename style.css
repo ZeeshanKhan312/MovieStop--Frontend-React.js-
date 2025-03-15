@@ -1,43 +1,108 @@
 /* styles.css */
 
+/* Reset default body margin */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Main navbar styles */
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space between title and buttons */
-  padding: 10px 20px;
-  background-color: black;
+  justify-content: space-between;
+  padding: 8px 15px;
+  background-color: #1a1a1a;
   color: white;
   position: sticky;
   top: 0;
-  z-index: 1000; /* Keeps the navbar on top */
+  z-index: 1000; /* Ensures navbar stays on top of other content */
+  margin: 0;
 }
 
-/* Container for the title and buttons on the left */
+/* Left section of navbar containing title and search */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between title and search container */
+}
+
+/* Right section containing auth buttons */
 .navbar-right {
   display: flex;
-  gap: 15px; /* Space between title and buttons */
+  gap: 15px; /* Space between buttons */
 }
 
-/* Navbar Title */
+/* Website title styling */
 .navbar-title {
   font-size: 24px;
   font-weight: bold;
   margin: 0;
   color: white;
+  white-space: nowrap; /* Prevents title from wrapping */
 }
 
-.navbarBtn{
-  width: auto;
-  padding: 10px 20px;
-  background-color: #333533;
+/* Search section styles */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Search input field */
+#searchInput {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 3px;
+  background-color: #333;
+  color: white;
+  width: 180px;
+  font-size: 14px;
+}
+
+/* Search input placeholder color */
+#searchInput::placeholder {
+  color: #999;
+}
+
+/* Search input focus state */
+#searchInput:focus {
+  outline: none;
+  background-color: #444;
+}
+
+/* Search button styling */
+#searchButton {
+  padding: 6px 12px;
+  background-color: #333;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
 }
-.navbarBtn:hover{
-  background-color: #4CAF50;
+
+/* Search button hover effect */
+#searchButton:hover {
+  background-color: #444;
+}
+
+/* Auth button styles */
+.navbarBtn {
+  padding: 6px 12px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.navbarBtn:hover {
+  background-color: #444;
 }
 
 /* Modal Background */
@@ -108,6 +173,7 @@ form input, form textarea {
   border-radius: 4px;
 }
 
+/* Sign in button styles */
 .signinBtn{
   width: 100%;
   padding: 10px;
@@ -123,6 +189,7 @@ form input, form textarea {
   background-color: #126da2;
 }
 
+/* Sign up button styles */
 .signupBtn{
   width: 100%;
   padding: 10px;
@@ -138,3 +205,60 @@ form input, form textarea {
   background-color: #333533;
 }
 
+/* Tab Container Styles */
+.tab-container {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  margin: 0;
+  padding: 0;
+}
+
+.tabs {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding: 0;
+}
+
+/* Tab Button Styles */
+.tab-button {
+  padding: 15px 25px;
+  border: none;
+  background: none;
+  color: #666;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.tab-button:hover {
+  color: #4CAF50;
+}
+
+.tab-button.active {
+  color: #4CAF50;
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #4CAF50;
+}
+
+/* Tab Content Container */
+.tab-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 400px;
+}
