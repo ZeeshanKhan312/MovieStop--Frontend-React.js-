@@ -105,6 +105,120 @@ body {
   background-color: #444;
 }
 
+/* Basic Carousel Styles */
+.carousel-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 20px;
+  background: #000;
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  height: 100%;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  padding: 40px 20px 20px;
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+.carousel-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-button.prev {
+  left: 20px;
+}
+
+.carousel-button.next {
+  right: 20px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 2;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
 /* Modal Background */
 .modal {  /* have used same modal design for both sign up and sign in by giving same class name */ 
   display: none; /* Hidden by default */
@@ -261,4 +375,53 @@ form input, form textarea {
   margin: 0 auto;
   padding: 20px;
   min-height: 400px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel {
+    height: 400px;
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .slide-caption {
+    font-size: 20px;
+    padding: 30px 15px 15px;
+  }
+
+  .carousel-button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .navbar-left {
+    gap: 10px;
+  }
+
+  .search-container {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    height: 300px;
+  }
+
+  .slide-caption {
+    font-size: 16px;
+    padding: 20px 10px 10px;
+  }
+
+  .carousel-button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .navbar-title {
+    font-size: 20px;
+  }
 }

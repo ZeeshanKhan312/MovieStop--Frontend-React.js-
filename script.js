@@ -133,7 +133,83 @@ tabButtons.forEach(button => {
     });
 });
 
-// Load default tab (Movies) on page load
-document.addEventListener('DOMContentLoaded', () => {
+// Carousel functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+    const nextButton = document.querySelector('.carousel-button.next');
+    const prevButton = document.querySelector('.carousel-button.prev');
+    const dotsContainer = document.querySelector('.carousel-dots');
+
+    let currentIndex = 0;
+    let autoAdvanceInterval;
+
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(document.querySelectorAll('.dot'));
+
+    // Update carousel position
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    // Go to specific slide
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+        resetAutoAdvance();
+    }
+
+    // Next slide
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+    }
+
+    // Previous slide
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    }
+
+    // Start auto-advance
+    function startAutoAdvance() {
+        autoAdvanceInterval = setInterval(nextSlide, 5000);
+    }
+
+    // Reset auto-advance
+    function resetAutoAdvance() {
+        clearInterval(autoAdvanceInterval);
+        startAutoAdvance();
+    }
+
+    // Event listeners
+    nextButton.addEventListener('click', () => {
+        nextSlide();
+        resetAutoAdvance();
+    });
+
+    prevButton.addEventListener('click', () => {
+        prevSlide();
+        resetAutoAdvance();
+    });
+
+    // Pause on hover
+    track.addEventListener('mouseenter', () => clearInterval(autoAdvanceInterval));
+    track.addEventListener('mouseleave', startAutoAdvance);
+
+    // Initialize carousel and load default tab
+    updateCarousel();
+    startAutoAdvance();
     loadTabContent('movies');
 });
