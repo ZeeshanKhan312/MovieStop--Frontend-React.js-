@@ -1,11 +1,10 @@
-/* styles.css */
-
 /* Reset default body margin */
 body {
   margin: 0;
   padding: 0;
 }
 
+/* ===== Navbar Styles ===== */
 /* Main navbar styles */
 .navbar {
   display: flex;
@@ -105,22 +104,20 @@ body {
   background-color: #444;
 }
 
+/* ===== Carousel Component ===== */
 /* Basic Carousel Styles */
 .carousel-container {
   width: 100%;
   max-width: 100%;
-  margin: 0 auto 20px;
+  margin: 0;
   background: #000;
+  overflow: hidden;
 }
 
 .carousel {
   position: relative;
   overflow: hidden;
   height: 500px;
-  max-width: 900px;
-  margin: 0 auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-track {
@@ -136,9 +133,11 @@ body {
 }
 
 .carousel-slide img {
-  width: 100%;
+  width: 86%;
   height: 100%;
-  object-fit: cover;
+  object-fit:cover;
+  margin-right: 7%;
+  margin-left: 7%;
 }
 
 .slide-caption {
@@ -219,6 +218,7 @@ body {
   border-color: rgba(255, 255, 255, 0.4);
 }
 
+/* ===== Modal Styles ===== */
 /* Modal Background */
 .modal {  /* have used same modal design for both sign up and sign in by giving same class name */ 
   display: none; /* Hidden by default */
@@ -319,7 +319,7 @@ form input, form textarea {
   background-color: #333533;
 }
 
-/* Tab Container Styles */
+/* ===== Tab Navigation ===== */
 .tab-container {
   background-color: #f8f9fa;
   border-bottom: 1px solid #dee2e6;
@@ -377,7 +377,7 @@ form input, form textarea {
   min-height: 400px;
 }
 
-/* Responsive adjustments */
+/* ===== Responsive Design ===== */
 @media (max-width: 768px) {
   .carousel {
     height: 400px;

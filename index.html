@@ -1,144 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MovieStop Home</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome for star icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Viewport settings for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage -->
+    <title>MovieStop Home</title>
+    <!-- Stylesheet for custom styling -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for star icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <!-- Left section: Title and Search -->
+        <div class="navbar-left">
+            <!-- Title of the webpage -->
+            <h1 class="navbar-title">Movie Stop</h1>
+            <!-- Search functionality container -->
+            <div class="search-container">
+                <!-- Search input field -->
+                <input type="text" id="searchInput" placeholder="Search movies..." aria-label="Search movies">
+                <!-- Search button -->
+                <button id="searchButton" aria-label="Search">Search</button>
+            </div>
+        </div>
+        <!-- Right section: Authentication Buttons -->
+        <div class="navbar-right">
+            <!-- Modal trigger buttons -->
+            <button class="navbarBtn" id="openSignupModalBtn">Sign Up</button>
+            <button class="navbarBtn" id="openSigninModalBtn">Sign In</button>
+        </div>
+    </nav>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <!-- Left section of navbar containing title and search -->
-    <div class="navbar-left">
-      <h1 class="navbar-title">Movie Stop</h1>
-      <!-- Search functionality container -->
-      <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search movies..." aria-label="Search movies">
-        <button id="searchButton" aria-label="Search">Search</button>
-      </div>
+    <!-- Carousel Slider -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <!-- Carousel Track for Sliding Images -->
+            <div class="carousel-track">
+                <!-- Individual Slides -->
+                <div class="carousel-slide">
+                    <!-- Image for the slide -->
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg" alt="The Dark Knight">
+                    <!-- Caption for the slide -->
+                    <p class="slide-caption">The Dark Knight - Coming Soon</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" alt="Inception">
+                    <p class="slide-caption">Inception Returns - August 2024</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMw@@._V1_.jpg" alt="Ocean's Eleven">
+                    <p class="slide-caption">Ocean's Legacy - June 2024</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTg1MTY2MjYzNV5BMl5BanBnXkFtZTgwMTc4NTMwNDI@._V1_.jpg" alt="Black Panther">
+                    <p class="slide-caption">The Last Stand - September 2024</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_.jpg" alt="Eternal Sunshine">
+                    <p class="slide-caption">Eternal Sunshine - May 2024</p>
+                </div>
+            </div>
+            <!-- Carousel Navigation -->
+            <button class="carousel-button prev">&#10094;</button>
+            <button class="carousel-button next">&#10095;</button>
+            <!-- Carousel Dot Indicators -->
+            <div class="carousel-dots"></div>
+        </div>
     </div>
-    <!-- Right section of navbar containing authentication buttons -->
-    <div class="navbar-right">
-       <!-- Modal trigger buttons -->
-      <button class="navbarBtn" id="openSignupModalBtn">Sign Up</button>
-      <button class="navbarBtn" id="openSigninModalBtn">Sign In</button>
+
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+        <div class="tabs">
+            <!-- Tab buttons for different categories -->
+            <button class="tab-button active" data-tab="movies">Movies</button>
+            <button class="tab-button" data-tab="stream">Stream</button>
+            <button class="tab-button" data-tab="events">Events</button>
+            <button class="tab-button" data-tab="plays">Plays</button>
+            <button class="tab-button" data-tab="sports">Sports</button>
+            <button class="tab-button" data-tab="activities">Activities</button>
+        </div>
     </div>
-  </nav>
 
-  <!-- Carousel Slider -->
-  <div class="carousel-container">
-    <div class="carousel">
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg" alt="The Dark Knight">
-          <p class="slide-caption">The Dark Knight - Coming Soon</p>
-        </div>
-        <div class="carousel-slide">
-          <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" alt="Inception">
-          <p class="slide-caption">Inception Returns - August 2024</p>
-        </div>
-        <div class="carousel-slide">
-          <img src="https://m.media-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMw@@._V1_.jpg" alt="Ocean's Eleven">
-          <p class="slide-caption">Ocean's Legacy - June 2024</p>
-        </div>
-        <div class="carousel-slide">
-          <img src="https://m.media-amazon.com/images/M/MV5BMTg1MTY2MjYzNV5BMl5BanBnXkFtZTgwMTc4NTMwNDI@._V1_.jpg" alt="Black Panther">
-          <p class="slide-caption">The Last Stand - September 2024</p>
-        </div>
-        <div class="carousel-slide">
-          <img src="https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_.jpg" alt="Eternal Sunshine">
-          <p class="slide-caption">Eternal Sunshine - May 2024</p>
-        </div>
-      </div>
-      <button class="carousel-button prev">&#10094;</button>
-      <button class="carousel-button next">&#10095;</button>
-      <div class="carousel-dots"></div>
+    <!-- Tab Content Container -->
+    <div id="tabContent" class="tab-content">
+        <!-- Content will be loaded here dynamically -->
     </div>
-  </div>
 
-  <!-- Tab Navigation -->
-  <div class="tab-container">
-    <div class="tabs">
-      <button class="tab-button active" data-tab="movies">Movies</button>
-      <button class="tab-button" data-tab="stream">Stream</button>
-      <button class="tab-button" data-tab="events">Events</button>
-      <button class="tab-button" data-tab="plays">Plays</button>
-      <button class="tab-button" data-tab="sports">Sports</button>
-      <button class="tab-button" data-tab="activities">Activities</button>
+    <!-- Sign-Up Modal Structure -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <!-- Close button for the modal -->
+            <span class="close">&times;</span>
+            <!-- Title of the modal -->
+            <h2>Sign Up</h2>
+            <!-- Horizontal divider -->
+            <hr class="divider">
+            <!-- Sign-up form -->
+            <form id="signupForm">
+                <!-- Form group for name input -->
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <!-- Form group for email input -->
+                <div class="form-group">
+                    <label for="email">Email ID:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <!-- Form group for phone number input -->
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <!-- Form group for address input -->
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+
+                <!-- Form group for pincode input -->
+                <div class="form-group">
+                    <label for="pincode">Pin Code:</label>
+                    <input type="text" id="pincode" name="pincode" required>
+                </div>
+
+                <!-- Sign-up button -->
+                <button class="signupBtn" type="submit">Sign Up</button>
+            </form>
+            <!-- Button to open sign-in modal -->
+            <button class="signinBtn" id="openSigninModalBtn">Sign In</button>
+        </div>
     </div>
-  </div>
 
-  <!-- Tab Content Container -->
-  <div id="tabContent" class="tab-content">
-    <!-- Content will be loaded here dynamically -->
-  </div>
-
-  <!-- Sign-Up Modal Structure -->
-  <div id="signupModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Sign Up</h2>
-      <hr class="divider">  <!-- use to create line -->
-      <form id="signupForm">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
+    <!-- Sign-In Modal Structure -->
+    <div id="signinModal" class="modal">
+        <div class="modal-content">
+            <!-- Close button for the modal -->
+            <span class="close">&times;</span>
+            <!-- Title of the modal -->
+            <h2>Sign In</h2>
+            <!-- Horizontal divider -->
+            <hr class="divider">
+            <!-- Sign-in form -->
+            <form id="signinForm">
+                <!-- Form group for email input -->
+                <div class="form-group">
+                    <label for="signinEmail">Email ID:</label>
+                    <input type="email" id="signinEmail" name="signinEmail" required>
+                </div>
+                <!-- Form group for password input -->
+                <div class="form-group">
+                    <label for="signinPassword">Password:</label>
+                    <input type="password" id="signinPassword" name="signinPassword" required>
+                </div>
+                <!-- Sign-in button -->
+                <button class="signinBtn" type="submit">Sign In</button>
+            </form>
+            <!-- Button to open sign-up modal -->
+            <button class="signupBtn" id="openSignupModalBtn">Sign Up</button>
         </div>
-
-        <div class="form-group">
-          <label for="email">Email ID:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone Number:</label>
-          <input type="tel" id="phone" name="phone" required>
-        </div>
-
-        <div class="form-group">
-          <label for="address">Address:</label>
-          <textarea id="address" name="address" rows="3" required></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="pincode">Pin Code:</label>
-          <input type="text" id="pincode" name="pincode" required>
-        </div>
-
-        <button class="signupBtn" type="submit">Sign Up</button>
-      </form>
-      <button class="signinBtn" id="openSigninModalBtn">Sign In</button>
     </div>
-  </div>
 
-  <!-- Sign-In Modal Structure -->
-  <div id="signinModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Sign In</h2>
-      <hr class="divider">
-      <form id="signinForm">
-        <div class="form-group">
-          <label for="signinEmail">Email ID:</label>
-          <input type="email" id="signinEmail" name="signinEmail" required>
-        </div>
-        <div class="form-group">
-          <label for="signinPassword">Password:</label>
-          <input type="password" id="signinPassword" name="signinPassword" required>
-        </div>
-        <button class="signinBtn" type="submit">Sign In</button>
-      </form>
-      <button class="signupBtn" id="openSignupModalBtn">Sign Up</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <!-- JavaScript for functionality -->
+    <script src="script.js"></script>
 </body>
 
 </html>

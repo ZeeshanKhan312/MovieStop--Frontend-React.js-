@@ -1,110 +1,74 @@
-// Sample movie data with images
+// Sample movie data with titles, ratings, and image URLs
 const movies = [
     {
         title: "The Dark Knight",
-        genre: "Action/Drama",
-        releaseDate: "July 18, 2024",
-        rating: 9.3,
-        votes: "2.5M",
-        image: "https://images.pexels.com/photos/2304204/pexels-photo-2304204.jpeg"
+        rating: 9.0,
+        image: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
+        releaseDate: "2008",
+        genre: "Action, Crime, Drama"
     },
     {
-        title: "Inception Returns",
-        genre: "Sci-Fi/Thriller",
-        releaseDate: "August 5, 2024",
-        rating: 8.9,
-        votes: "1.8M",
-        image: "https://lh3.googleusercontent.com/pw/AP1GczNYf0uUuSpJeY40lzFaZnyxP11zqYLGydnPw9-L5sX-uqd5HIMNlFqM4bOJVYIGpRr_8vVXtUal7sDKuFkeNHzxVCbuXBgY9CWmhieC7dBBpH7FVTrbsYBaeM3LXRqIKVTnQ7JFP1GP59Ump95f5lJK8A=w689-h919-s-no-gm"
-    },
-    {
-        title: "Ocean's Legacy",
-        genre: "Crime/Comedy",
-        releaseDate: "June 12, 2024",
-        rating: 8.5,
-        votes: "950K",
-        image: "https://images.pexels.com/photos/2304204/pexels-photo-2304204.jpeg"
-    },
-    {
-        title: "The Last Stand",
-        genre: "Action/Adventure",
-        releaseDate: "September 3, 2024",
-        rating: 8.7,
-        votes: "1.2M",
-        image: "https://images.pexels.com/photos/2304204/pexels-photo-2304204.jpeg"
-    },
-    {
-        title: "Eternal Sunshine",
-        genre: "Romance/Drama",
-        releaseDate: "May 28, 2024",
+        title: "Inception",
         rating: 8.8,
-        votes: "750K",
-        image: "https://images.pexels.com/photos/2304204/pexels-photo-2304204.jpeg"
+        image: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
+        releaseDate: "2010",
+        genre: "Action, Adventure, Sci-Fi"
+    },
+    {
+        title: "Ocean's Eleven",
+        rating: 7.7,
+        image: "https://m.media-amazon.com/images/M/MV5BYzVmYzVkMmUtOGRhMi00MTNmLThlMmUtZTljYjlkMjNkMjJkXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_.jpg",
+        releaseDate: "2001",
+        genre: "Crime, Thriller"
+    },
+    {
+        title: "Black Panther",
+        rating: 7.3,
+        image: "https://m.media-amazon.com/images/M/MV5BMTg1MTY2MjYzNV5BMl5BanBnXkFtZTgwMTc4NTMwNDI@._V1_.jpg",
+        releaseDate: "2018",
+        genre: "Action, Adventure"
+    },
+    {
+        title: "Eternal Sunshine of the Spotless Mind",
+        rating: 8.3,
+        image: "https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_.jpg",
+        releaseDate: "2004",
+        genre: "Drama, Romance, Sci-Fi"
+    },
+    {
+        title: "The Shawshank Redemption",
+        rating: 9.3,
+        image: "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+        releaseDate: "1994",
+        genre: "Drama"
     }
 ];
 
-/**
- * Creates a movie card element with image and details
- * @param {Object} movie - Movie object containing title, genre, releaseDate, rating, votes, and image
- * @returns {HTMLElement} Card element with movie details
- */
+// Function to create a movie card element
 function createMovieCard(movie) {
-    const card = document.createElement('div');
-    card.className = 'movie-card';
-    
-    card.innerHTML = `
-        <div class="movie-image">
-            <img src="${movie.image}" alt="${movie.title}" loading="lazy">
-        </div>
-        <div class="movie-info">
-            <h3 class="movie-title">${movie.title}</h3>
-            <div class="movie-genre">${movie.genre}</div>
-            <div class="movie-release">${movie.releaseDate}</div>
-            <div class="movie-rating">
-                <span class="rating-value">${movie.rating}</span>
-                <span class="rating-star"><i class="fas fa-star"></i></span>
-                <span class="rating-votes">${movie.votes} votes</span>
+    return `
+        <div class="movie-card">
+            <img src="${movie.image}" alt="${movie.title}" class="movie-image">
+            <div class="movie-info">
+                <h3 class="movie-title">${movie.title}</h3>
+                <div class="movie-rating">
+                    <span class="rating-number">${movie.rating.toFixed(1)}</span>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="movie-metadata">${movie.releaseDate} • ${movie.genre}</p>
             </div>
         </div>
     `;
-    
-    return card;
 }
 
-/**
- * Displays all movies in the grid layout
- * Called when the Movies tab is loaded
- */
+// Function to display all movies in a grid layout
 function displayMovies() {
-    // Wait for DOM to be ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', displayMoviesGrid);
-    } else {
-        displayMoviesGrid();
-    }
-}
-
-/**
- * Helper function to actually display the movies in the grid
- * This ensures we have access to DOM elements
- */
-function displayMoviesGrid() {
     const movieGrid = document.querySelector('.movie-grid');
-    if (!movieGrid) {
-        console.error('Movie grid not found');
-        return;
-    }
-    
-    movieGrid.innerHTML = '';
-    movies.forEach(movie => {
-        const card = createMovieCard(movie);
-        movieGrid.appendChild(card);
-    });
+    if (!movieGrid) return; // Exit if grid not found
+
+    const movieCardsHTML = movies.map(movie => createMovieCard(movie)).join('');
+    movieGrid.innerHTML = movieCardsHTML;
 }
 
-// Make displayMovies available globally
+// Export the displayMovies function for use in other files
 window.displayMovies = displayMovies;
-
-// Initialize movies if we're on the movies page
-if (document.querySelector('.movie-grid')) {
-    displayMovies();
-}

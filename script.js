@@ -1,20 +1,22 @@
-// Global state
+// Global state to track if movies script is loaded
 let moviesScriptLoaded = false;
 
-// Get DOM elements for modals
+/* ===== DOM Element References ===== */
+// Modal elements
 const signupModal = document.getElementById("signupModal");
 const signinModal = document.getElementById("signinModal");
 const openSignupModalBtn = document.querySelectorAll("#openSignupModalBtn");
 const openSigninModalBtn = document.querySelectorAll("#openSigninModalBtn");
 const closeButtons = document.querySelectorAll(".close");
 
-// Get DOM elements for search functionality
+// Search functionality elements
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 
-// Variable to store the current search query
+// Store current search query
 let searchQuery = '';
 
+/* ===== Modal Management ===== */
 // Open Sign-Up modal and close Sign-In modal if open
 openSignupModalBtn.forEach(button => {
     button.onclick = function() {
@@ -31,7 +33,7 @@ openSigninModalBtn.forEach(button => {
     }
 });
 
-// Close modals when the 'X' button is clicked
+// Close modals when clicking the 'X' button
 closeButtons.forEach(button => {
     button.onclick = function() {
         signupModal.style.display = "none";
@@ -39,7 +41,7 @@ closeButtons.forEach(button => {
     }
 });
 
-// Close modals when clicking outside of them
+// Close modals when clicking outside the modal content
 window.onclick = function(event) {
     if (event.target === signupModal) {
         signupModal.style.display = "none";
@@ -49,7 +51,8 @@ window.onclick = function(event) {
     }
 }
 
-// Search functionality
+/* ===== Search Functionality ===== */
+// Add event listeners for search button and Enter key
 searchButton.addEventListener('click', handleSearch);
 searchInput.addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
@@ -57,17 +60,18 @@ searchInput.addEventListener('keypress', function(event) {
     }
 });
 
+// Handle search input and clear search field
 function handleSearch() {
     searchQuery = searchInput.value.trim();
     console.log('Search query:', searchQuery);
     searchInput.value = '';
 }
 
-// Tab Navigation
+/* ===== Tab Navigation ===== */
 const tabButtons = document.querySelectorAll('.tab-button');
 const tabContent = document.getElementById('tabContent');
 
-// Map of tab IDs to their corresponding HTML files
+// Map tab IDs to their corresponding HTML files
 const tabPages = {
     'movies': './pages/movies.html',
     'stream': './pages/stream.html',
@@ -77,7 +81,7 @@ const tabPages = {
     'activities': './pages/activities.html'
 };
 
-// Function to load the movies script once
+// Load movies.js script only once
 async function loadMoviesScript() {
     if (moviesScriptLoaded) {
         return Promise.resolve();
@@ -95,7 +99,7 @@ async function loadMoviesScript() {
     });
 }
 
-// Function to load tab content
+// Load content for selected tab
 async function loadTabContent(tabId) {
     try {
         // First load the HTML content
@@ -103,7 +107,7 @@ async function loadTabContent(tabId) {
         const html = await response.text();
         tabContent.innerHTML = html;
         
-        // If this is the movies tab, ensure the script is loaded and display movies
+        // For movies tab, ensure script is loaded and display movies
         if (tabId === 'movies') {
             if (!moviesScriptLoaded) {
                 await loadMoviesScript();
@@ -126,15 +130,19 @@ async function loadTabContent(tabId) {
 // Add click event listeners to tab buttons
 tabButtons.forEach(button => {
     button.addEventListener('click', () => {
+        // Update active tab styling
         tabButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
+        
+        // Load the selected tab's content
         const tabId = button.getAttribute('data-tab');
         loadTabContent(tabId);
     });
 });
 
-// Carousel functionality
+/* ===== Carousel Functionality ===== */
 document.addEventListener('DOMContentLoaded', function() {
+    // Get carousel elements
     const track = document.querySelector('.carousel-track');
     const slides = Array.from(document.querySelectorAll('.carousel-slide'));
     const nextButton = document.querySelector('.carousel-button.next');
@@ -144,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
     let autoAdvanceInterval;
 
-    // Create dots
+    // Create navigation dots for each slide
     slides.forEach((_, index) => {
         const dot = document.createElement('button');
         dot.classList.add('dot');
@@ -155,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const dots = Array.from(document.querySelectorAll('.dot'));
 
-    // Update carousel position
+    // Update carousel position and active dot
     function updateCarousel() {
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
         dots.forEach((dot, index) => {
@@ -163,37 +171,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Go to specific slide
+    // Navigate to specific slide
     function goToSlide(index) {
         currentIndex = index;
         updateCarousel();
         resetAutoAdvance();
     }
 
-    // Next slide
+    // Navigate to next slide
     function nextSlide() {
         currentIndex = (currentIndex + 1) % slides.length;
         updateCarousel();
     }
 
-    // Previous slide
+    // Navigate to previous slide
     function prevSlide() {
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
         updateCarousel();
     }
 
-    // Start auto-advance
+    // Start auto-advance timer
     function startAutoAdvance() {
         autoAdvanceInterval = setInterval(nextSlide, 5000);
     }
 
-    // Reset auto-advance
+    // Reset auto-advance timer
     function resetAutoAdvance() {
         clearInterval(autoAdvanceInterval);
         startAutoAdvance();
     }
 
-    // Event listeners
+    // Add event listeners for navigation buttons
     nextButton.addEventListener('click', () => {
         nextSlide();
         resetAutoAdvance();
@@ -204,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
         resetAutoAdvance();
     });
 
-    // Pause on hover
+    // Pause auto-advance on hover
     track.addEventListener('mouseenter', () => clearInterval(autoAdvanceInterval));
     track.addEventListener('mouseleave', startAutoAdvance);
 
