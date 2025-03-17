@@ -114,6 +114,8 @@ body {
   margin: 0;
   background: #000;
   overflow: hidden;
+  position: relative; /* Create stacking context */
+  z-index: 1; /* Lower z-index than modal */
 }
 
 .carousel {
@@ -232,6 +234,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   justify-content: center;
   align-items: center;
+  z-index: 1000; /* Higher z-index to appear above carousel */
 }
 
 /* Modal Content Box */
@@ -243,6 +246,7 @@ body {
   max-width: 80%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
+  z-index: 1001; /* Even higher z-index */
 }
 
 /* Close Button */
