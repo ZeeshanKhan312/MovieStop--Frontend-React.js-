@@ -4,133 +4,32 @@
 -->
 <link rel="stylesheet" href="pages/styles/movies.css">
 
-<!-- Movies Page Content -->
+<!-- Latest Movies Section -->
+<!-- The movie-grid class is used by the JavaScript to target this specific container -->
 <div class="movies-container">
+    <h2 id="latest-title">Latest Movies</h2>
     <!-- Grid layout for displaying movie cards -->
     <div class="movie-grid">
         <!-- Movie cards will be dynamically inserted here by movies.js -->
     </div>
 </div>
 
-<!-- Styles specific to the movies page -->
-<style>
-    /* Container for the entire movies section */
-    .movies-container {
-        padding: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+<!-- Trending Movies Section -->
+<!-- The trending-grid ID is used by the JavaScript to target this specific container -->
+<div class="movies-container">
+    <h2 id="trending-title">Trending Movies</h2>
+    <!-- Grid layout for displaying trending movie cards -->
+    <div class="movie-grid" id="trending-grid">
+        <!-- Trending movie cards will be dynamically inserted here by movies.js -->
+    </div>
+</div>
 
-    /* Grid layout for movie cards */
-    .movie-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 20px;
-        padding: 20px 0;
-    }
-
-    /* Individual movie card styling */
-    .movie-card {
-        background: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease;
-    }
-
-    /* Hover effect for movie cards */
-    .movie-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Movie poster image */
-    .movie-image {
-        width: 100%;
-        aspect-ratio: 2/3;
-        object-fit: cover;
-    }
-
-    /* Container for movie information */
-    .movie-info {
-        padding: 12px;
-    }
-
-    /* Movie title styling */
-    .movie-title {
-        margin: 0 0 8px 0;
-        font-size: 1rem;
-        font-weight: bold;
-        color: #333;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Star rating container */
-    .movie-rating {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        margin-bottom: 8px;
-    }
-
-    /* Numeric rating display */
-    .rating-number {
-        color: #000;
-        font-size: 1rem;
-        font-weight: bold;
-    }
-
-    /* Star icon styling */
-    .movie-rating i {
-        color: #ffd700;
-        font-size: 1rem;
-    }
-
-    /* Movie metadata (year and genre) */
-    .movie-metadata {
-        color: #666;
-        font-size: 0.8rem;
-        margin: 0;
-    }
-
-    /* Responsive design adjustments */
-    @media (max-width: 768px) {
-        .movie-grid {
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
-        }
-
-        .movie-info {
-            padding: 8px;
-        }
-
-        .movie-title {
-            font-size: 0.9rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .movie-grid {
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
-        }
-
-        .movie-info {
-            padding: 6px;
-        }
-
-        .movie-title {
-            font-size: 0.8rem;
-        }
-
-        .rating-number {
-            font-size: 0.9rem;
-        }
-
-        .movie-rating i {
-            font-size: 0.9rem;
-        }
-    }
-</style>
+<!-- Recommended Movies Section -->
+<!-- The recommended-grid ID is used by the JavaScript to target this specific container -->
+<div class="movies-container">
+    <h2 id="recommended-title">Recommended Movies</h2>
+    <!-- Grid layout for displaying recommended movie cards -->
+    <div class="movie-grid" id="recommended-grid">
+        <!-- Recommended movie cards will be dynamically inserted here by movies.js -->
+    </div>
+</div>

@@ -1,7 +1,9 @@
 /* Reset default body margin */
 body {
+  background-color: #0f1117; /* Dark blue-black background that suits a movie website */
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 /* ===== Navbar Styles ===== */
@@ -10,8 +12,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 15px;
-  background-color: #1a1a1a;
+  padding: 10px 20px;
+  background-color: #040404;
   color: white;
   position: sticky;
   top: 0;
@@ -84,7 +86,7 @@ body {
 
 /* Search button hover effect */
 #searchButton:hover {
-  background-color: #444;
+  background-color: #616060;
 }
 
 /* Auth button styles */
@@ -101,7 +103,7 @@ body {
 }
 
 .navbarBtn:hover {
-  background-color: #444;
+  background-color: #616060;
 }
 
 /* ===== Carousel Component ===== */
@@ -373,7 +375,7 @@ form input, form textarea {
 .tab-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
   min-height: 400px;
 }
 
