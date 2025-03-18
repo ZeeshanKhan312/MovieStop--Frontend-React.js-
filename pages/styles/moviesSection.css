@@ -1,0 +1,158 @@
+/* Movies Section Grid Styles */
+
+/* Container for the entire movies section */
+.movies-container {
+    padding: 10px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+/* Section heading styling */
+.movies-container h2 {
+    margin-bottom: 15px;
+    margin-top: 0px;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #e50914;
+}
+
+/* Grid layout for movie cards - VERTICAL SCROLLING */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+    gap: 20px;
+    padding: 15px 0;
+    max-height: calc(100vh - 200px); /* Set a max height for vertical scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.movie-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual movie card styling */
+.movie-card {
+    background: #1f2937;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for movie cards */
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(229, 9, 20, 0.3);
+}
+
+/* Movie poster image */
+.movie-image {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+/* Container for movie information */
+.movie-info {
+    padding: 12px;
+}
+
+/* Movie title styling */
+.movie-title {
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Star rating container */
+.movie-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+/* Numeric rating display */
+.rating-number {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Star icon styling */
+.movie-rating i {
+    color: #ffd700;
+    font-size: 1rem;
+}
+
+/* Movie metadata (year and genre) */
+.movie-metadata {
+    color: #9ca3af; /* Lighter gray for secondary text */
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.release-date, .genre {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 1200px) {
+    .movie-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    }
+}
+
+@media (max-width: 992px) {
+    .movie-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+        gap: 15px;
+    }
+
+    .movie-info {
+        padding: 8px;
+    }
+
+    .movie-title {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-grid {
+        grid-template-columns: 1fr; /* 1 card per row */
+        gap: 10px;
+    }
+
+    .movie-info {
+        padding: 6px;
+    }
+
+    .movie-title {
+        font-size: 0.8rem;
+    }
+
+    .rating-number, .movie-rating i {
+        font-size: 0.9rem;
+    }
+}

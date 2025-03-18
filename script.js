@@ -1,5 +1,6 @@
-// Global state to track if movies script is loaded
+// Global state to track if scripts are loaded
 let moviesScriptLoaded = false;
+let moviesSectionScriptLoaded = false;
 
 /* ===== DOM Element References ===== */
 // Modal elements
@@ -74,6 +75,13 @@ const tabContent = document.getElementById('tabContent');
 // Map tab IDs to their corresponding HTML files
 const tabPages = {
     'movies': './pages/movies.html',
+    'bollywood': './pages/moviesSection.html',
+    'hollywood': './pages/moviesSection.html',
+    'action': './pages/moviesSection.html',
+    'comedy': './pages/moviesSection.html',
+    'horror': './pages/moviesSection.html',
+    'romance': './pages/moviesSection.html',
+    'sci-fi': './pages/moviesSection.html',
     'stream': './pages/stream.html',
     'events': './pages/events.html',
     'plays': './pages/plays.html',
@@ -99,6 +107,24 @@ async function loadMoviesScript() {
     });
 }
 
+// Load moviesSection.js script only once
+async function loadMoviesSectionScript() {
+    if (moviesSectionScriptLoaded) {
+        return Promise.resolve();
+    }
+
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = './pages/scripts/moviesSection.js';
+        script.onload = () => {
+            moviesSectionScriptLoaded = true;
+            resolve();
+        };
+        script.onerror = () => reject(new Error('Failed to load moviesSection script'));
+        document.body.appendChild(script);
+    });
+}
+
 // Load content for selected tab
 async function loadTabContent(tabId) {
     try {
@@ -118,6 +144,20 @@ async function loadTabContent(tabId) {
                     displayMovies();
                 } else {
                     console.error('displayMovies function not found');
+                }
+            }, 50);
+        } 
+        // For category tabs (bollywood, hollywood, action, etc.), load moviesSection script
+        else if (['bollywood', 'hollywood', 'action', 'comedy', 'horror', 'romance', 'sci-fi'].includes(tabId)) {
+            if (!moviesSectionScriptLoaded) {
+                await loadMoviesSectionScript();
+            }
+            // Short delay to ensure DOM is updated
+            setTimeout(() => {
+                if (typeof displayMoviesByTab === 'function') {
+                    displayMoviesByTab(tabId);
+                } else {
+                    console.error('displayMoviesByTab function not found');
                 }
             }, 50);
         }

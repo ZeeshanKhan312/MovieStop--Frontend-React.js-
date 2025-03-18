@@ -107,6 +107,12 @@
     margin: 0;
 }
 
+.release-date, .genre {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Responsive design adjustments */
 @media (max-width: 768px) {
     .movie-grid {
